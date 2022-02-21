@@ -32,7 +32,7 @@ export class FargateDemoStack extends cdk.Stack {
             }
         )
 
-        // Fargat Service
+        // Fargate Service
         const backendService = new ecs_patterns.ApplicationLoadBalancedFargateService(
             this,
             "backendService",

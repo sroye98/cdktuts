@@ -1,0 +1,24 @@
+@page "/fibonacci"
+@inject HttpClient Http
+
+<PageTitle>Fibonacci Generator v1.0</PageTitle>
+
+<h2>Fibonacci Generator v1.0</h2>
+<hr />
+<form OnValidSubmit="@HandleValidSubmit">
+    <label>Number: </label>
+    <InputText type="number" @bind-Value="number" />
+    <button type="submit">Generate</button>
+</form>
+<hr />
+<h2>Result: @(result) </h2>
+
+@code {
+    private int result;
+    private int number;
+
+    private void HandleValidSubmit()
+    {
+        result = Http.GetFromJsonAsync<int>($"http://localhost/generate/{number}");
+    }
+}
